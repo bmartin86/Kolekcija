@@ -14,7 +14,8 @@ class FilmoviController extends Controller
      */
     public function index()
     {
-        //
+        $filmovi = Filmovi::all();
+        return view('filmovis.index', compact('filmovi'));
     }
 
     /**
