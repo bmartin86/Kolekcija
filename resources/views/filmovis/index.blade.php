@@ -19,7 +19,15 @@
             <td>{{$f->naslov }}</td>
             <td>{{$f->godina }}</td>
             <td>{{$f->trajanje }}</td>
-            <td>%</td>
+            <td>
+                <form style="display:inline" name="film_delete" action="{{url("/filmovi/{$f->film_id}")}}
+                      " method="POST" enctype="multipart/form-data">
+                @method('delete')
+                @csrf
+                <button type="submit" style="color: blue">[ obriši ]
+                </button>
+                </form>
+            </td>
         </tr>
 @endforeach
     </tbody>

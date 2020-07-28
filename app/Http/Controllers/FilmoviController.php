@@ -81,6 +81,7 @@ class FilmoviController extends Controller
      */
     public function destroy(Filmovi $filmovi)
     {
-        //
+        $filmovi->delete();
+        return redirect()->route('filmovi.index');
     }
 }
