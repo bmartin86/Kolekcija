@@ -34,3 +34,4 @@
 </table>
   </div>
 </div>
+<a href='{{route('filmovi.create')}}'>Dodaj novi film</a>

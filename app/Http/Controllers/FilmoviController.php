@@ -25,7 +25,7 @@ class FilmoviController extends Controller
      */
     public function create()
     {
-        //
+        return view ('filmovis.create');
     }
 
     /**
