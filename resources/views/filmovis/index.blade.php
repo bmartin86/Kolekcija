@@ -1,7 +1,6 @@
 
 <h3>Lista filmova:</h3>
 <div class="container">
-    <div class="jumbotron">
 <table>
     <thead>
         <tr>
@@ -15,7 +14,7 @@
     <tbody>
 @foreach ($filmovi as $f)
         <tr>
-            <td><img src="{{ asset('slike/' . $f->slika).'.jpg' }}"widht="120" height="120" ></td>
+            <td><img src="{{ asset('slike/' . $f->slika) }}"widht="120" height="120" ></td>
             <td>{{$f->naslov }}</td>
             <td>{{$f->godina }}</td>
             <td>{{$f->trajanje }}</td>
@@ -32,6 +31,5 @@
 @endforeach
     </tbody>
 </table>
-  </div>
 </div>
 <a href='{{route('filmovi.create')}}'>Dodaj novi film</a>

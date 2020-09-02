@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filmovi;
+use App\Zanr;
 use Illuminate\Http\Request;
 
 class FilmoviController extends Controller
@@ -25,7 +26,8 @@ class FilmoviController extends Controller
      */
     public function create()
     {
-        return view ('filmovis.create');
+        $zanr = Zanr::all();
+        return view ('filmovis.create', compact('zanr'));
     }
 
     /**
@@ -34,11 +36,45 @@ class FilmoviController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Filmovi $filmovi)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'naslov' => 'required|string|max:99|alpha_num',
+            'godina' => 'required|numeric|between:1950,2020',
+            'trajanje' => 'required|numeric',
+            'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',  
+        ]);
+        
+        $filmovi->naslov = $request->input('naslov');
+        $filmovi->zanr_id = $request->input('zanr_id');
+        $filmovi->godina = $request->input('godina');
+        $filmovi->trajanje = $request->input('trajanje');
+        $filmovi->slika = $request->input('slika');
+        
+          $filmovi = new Filmovi();
 
+        $filmovi->naslov = $request->input('naslov');
+        $filmovi->zanr_id = $request->input('zanr_id');
+        $filmovi->godina = $request->input('godina');
+        $filmovi->trajanje = $request->input('trajanje');
+        $filmovi->slika = $request->input('slika');
+
+        if ($request->hasfile('slika')) {
+            $file = $request->file('slika');
+            $extension = $file->getClientOriginalExtension(); 
+            $filename = $request->file('slika')->storeAs('', $request->file('slika')->getClientOriginalName());
+            $file->move('slike/', $filename);
+            $filmovi->slika = $filename;
+        } else {
+            return $request;
+            $filmovi->slika = '';
+        }
+        $filmovi->save();
+        return redirect()->route('filmovi.index')->with('success', 'Film uspješno dodan!');
+    }
+       
+        
+          
     /**
      * Display the specified resource.
      *

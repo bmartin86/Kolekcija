@@ -17,7 +17,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 3,
         "godina" => 2001,
         "trajanje" => 108,
-        "slika" => "antitrust_2001",
+        "slika" => "antitrust_2001.jpg",
         ),
         array(
         "film_id" => 2,
@@ -25,7 +25,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 1,
         "godina" => 2006,
         "trajanje" => 105,
-        "slika" => "firewall_2006",
+        "slika" => "firewall_2006.jpg",
         ),
         array(
         "film_id" => 3,
@@ -33,7 +33,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 3,
         "godina" => 1995,
         "trajanje" => 105,
-        "slika" => "hackers_1995",
+        "slika" => "hackers_1995.jpg",
         ),
         array(
         "film_id" => 4,
@@ -41,7 +41,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 2,
         "godina" => 2001,
         "trajanje" => 99,
-        "slika" => "operation_swordfish_2001",
+        "slika" => "operation_swordfish_2001.jpg",
         ),
         array(
         "film_id" => 5,
@@ -49,7 +49,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 7,
         "godina" => 2000,
         "trajanje" => 96,
-        "slika" => "operation_takedown_2000",
+        "slika" => "operation_takedown_2000.jpg",
         ),
         array(
         "film_id" => 6,
@@ -57,7 +57,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 7,
         "godina" => 1999,
         "trajanje" => 95,
-        "slika" => "pirates_of_silicone_valley_1999",
+        "slika" => "pirates_of_silicone_valley_1999.jpg",
         ),
         array(
         "film_id" => 7,
@@ -65,7 +65,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 7,
         "godina" => 2010,
         "trajanje" => 120,
-        "slika" => "the_social_network_2010",
+        "slika" => "the_social_network_2010.jpg",
         ),
         array(
         "film_id" => 8,
@@ -73,7 +73,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 5,
         "godina" => 1982,
         "trajanje" => 96,
-        "slika" => "tron_1982",
+        "slika" => "tron_1982.jpg",
         ),
         array(
         "film_id" => 9,
@@ -81,7 +81,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 5,
         "godina" => 2010,
         "trajanje" => 125,
-        "slika" => "tron_legacy_2010",
+        "slika" => "tron_legacy_2010.jpg",
         ),
         array(
         "film_id" => 10,
@@ -89,7 +89,7 @@ class FilmoviSeeder extends Seeder {
         "zanr_id" => 11,
         "godina" => 1983,
         "trajanje" => 114,
-        "slika" => "war_games_1983",
+        "slika" => "war_games_1983.jpg",
         )
         );
         DB::table('filmovis')->delete();
