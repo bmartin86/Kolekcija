@@ -44,23 +44,24 @@
         <br>
 
         <label for="godina"> Godina:</label>
-        <input min="1950" max="2020" type="number" name="godina" required="true"
-               value="">
-        <br>
+        <select name="godina">
+            <option value=""></option>
+            @for ($god=1900; $god <= 2020; $god++)
+            <option value="{{ $god }}">{{ $god }}</option>
+            @endfor
+        </select>
         <br>
 
-        <label for="trajanje"> Trajanje:</label>
-        <br>
+        <p><label for="trajanje"> Trajanje:</label>
         <input maxlength="5" type="number" min=0 name="trajanje" required="true"
-               value="0">
-        <br>
-        <br>
+               value="0">min</p>
         
         <label for="slika"> Slika: </label>
             <input type="file" name="slika" >
         <br>
    
     </div>
+    <br>
     <div class="form-group">
         <input type="submit" name="dodaj_film_sbm" value="Dodaj novi film">
     </div>

@@ -40,7 +40,7 @@ class FilmoviController extends Controller
     {
         $validatedData = $request->validate([
             'naslov' => 'required|string|max:99|alpha_num',
-            'godina' => 'required|numeric|between:1950,2020',
+            'godina' => 'required|numeric',
             'trajanje' => 'required|numeric',
             'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',  
         ]);
@@ -60,8 +60,7 @@ class FilmoviController extends Controller
         $filmovi->slika = $request->input('slika');
 
         if ($request->hasfile('slika')) {
-            $file = $request->file('slika');
-            $extension = $file->getClientOriginalExtension(); 
+            $file = $request->file('slika'); 
             $filename = $request->file('slika')->storeAs('', $request->file('slika')->getClientOriginalName());
             $file->move('slike/', $filename);
             $filmovi->slika = $filename;
