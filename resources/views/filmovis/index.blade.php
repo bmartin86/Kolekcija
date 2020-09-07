@@ -5,7 +5,7 @@
     @endfor
 </div>
 
-{{ $subtitle ?? '%' }}
+{{ $subtitle ?? '' }}
 
 
 <h3>Lista filmova:</h3>
