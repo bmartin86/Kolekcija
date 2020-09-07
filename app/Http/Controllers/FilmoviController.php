@@ -49,7 +49,7 @@ class FilmoviController extends Controller {
      */
     public function store(Request $request, Filmovi $filmovi) {
         $validatedData = $request->validate([
-            'naslov' => 'required|string|max:99|alpha_num',
+            'naslov' => 'required|string|max:99',
             'godina' => 'required|numeric',
             'trajanje' => 'required|numeric',
             'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',

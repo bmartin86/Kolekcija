@@ -1,4 +1,3 @@
-
 @section('title', 'Dodaj novi film')
 @section('content_header')
 <h1>Novi film</h1>

@@ -1,8 +1,10 @@
-
+<?php
+$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
+?>
 <div class="content">
-    @for ($i = 'A'; $i !== 'AA'; $i++)
+    @foreach ($alpha_nums as $i) 
     <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i.'|'}}</a>
-    @endfor
+    @endforeach
 </div>
 
 {{ $subtitle ?? '' }}
