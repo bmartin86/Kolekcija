@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('filmovi/naslovo/{filter}', 'FilmoviController@filter');
 Route::resource('filmovi', 'FilmoviController');
 Route::get('/', function () {
     return view('welcome');

@@ -6,15 +6,27 @@ use App\Filmovi;
 use App\Zanr;
 use Illuminate\Http\Request;
 
-class FilmoviController extends Controller
-{
+class FilmoviController extends Controller {
+
+    public function filter($filter) {
+        $filmovi = Filmovi::where('naslov', 'like', $filter . '%')->get();
+
+        if (count($filmovi) == 0) {
+            $subtitle = "Ne postoji film na slovo " . $filter;
+            return view('filmovis.index', compact('filmovi', 'subtitle', 'filter'));
+        } else {
+
+            $subtitle = "Filmovi na slovo " . $filter;
+            return view('filmovis.index', compact('filmovi', 'subtitle', 'filter'));
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $filmovi = Filmovi::all();
         return view('filmovis.index', compact('filmovi'));
     }
@@ -24,10 +36,9 @@ class FilmoviController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         $zanr = Zanr::all();
-        return view ('filmovis.create', compact('zanr'));
+        return view('filmovis.create', compact('zanr'));
     }
 
     /**
@@ -36,22 +47,21 @@ class FilmoviController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Filmovi $filmovi)
-    {
+    public function store(Request $request, Filmovi $filmovi) {
         $validatedData = $request->validate([
             'naslov' => 'required|string|max:99|alpha_num',
             'godina' => 'required|numeric',
             'trajanje' => 'required|numeric',
-            'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',  
+            'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        
+
         $filmovi->naslov = $request->input('naslov');
         $filmovi->zanr_id = $request->input('zanr_id');
         $filmovi->godina = $request->input('godina');
         $filmovi->trajanje = $request->input('trajanje');
         $filmovi->slika = $request->input('slika');
-        
-          $filmovi = new Filmovi();
+
+        $filmovi = new Filmovi();
 
         $filmovi->naslov = $request->input('naslov');
         $filmovi->zanr_id = $request->input('zanr_id');
@@ -60,7 +70,7 @@ class FilmoviController extends Controller
         $filmovi->slika = $request->input('slika');
 
         if ($request->hasfile('slika')) {
-            $file = $request->file('slika'); 
+            $file = $request->file('slika');
             $filename = $request->file('slika')->storeAs('', $request->file('slika')->getClientOriginalName());
             $file->move('slike/', $filename);
             $filmovi->slika = $filename;
@@ -71,17 +81,14 @@ class FilmoviController extends Controller
         $filmovi->save();
         return redirect()->route('filmovi.index')->with('success', 'Film uspješno dodan!');
     }
-       
-        
-          
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function show(Filmovi $filmovi)
-    {
+    public function show(Filmovi $filmovi) {
         //
     }
 
@@ -91,8 +98,7 @@ class FilmoviController extends Controller
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Filmovi $filmovi)
-    {
+    public function edit(Filmovi $filmovi) {
         //
     }
 
@@ -103,8 +109,7 @@ class FilmoviController extends Controller
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Filmovi $filmovi)
-    {
+    public function update(Request $request, Filmovi $filmovi) {
         //
     }
 
@@ -114,9 +119,9 @@ class FilmoviController extends Controller
      * @param  \App\Filmovi  $filmovi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Filmovi $filmovi)
-    {
+    public function destroy(Filmovi $filmovi) {
         $filmovi->delete();
         return redirect()->route('filmovi.index');
     }
+
 }
