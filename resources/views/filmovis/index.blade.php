@@ -1,43 +1,54 @@
+@extends('layouts.app')
+@section('title', 'Filmovi')
+@section('sidebar')
+@parent
+<p>This is appended to the master sidebar.</p>
+@endsection
+
+@section('content')
 <?php
-//$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
-$alphas = (range('A', 'Z'));
-$nums = (range('0', '9'));
+$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
 ?>
-<div class="content">
-    @foreach ($alphas as $i) 
+<style>
+    .links {
+        text-align: center;
+        font-size: 21px;
+    }
+</style>
+
+<button type="button" class="btn btn-link" style="font-size: xx-large">
+    <a href='{{route('filmovi.create')}}'>Dodaj novi film:</a></button>
+
+<div class="links">
+    @foreach ($alpha_nums as $i) 
     <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i }}|</a>
     @endforeach
 </div>
-<div class="content">
-    @foreach ($nums as $i) 
-    <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i }}|</a>
-    @endforeach
+<br>
+<div>
+    <h4>{{ $subtitle ?? '' }}</h4>
 </div>
 
-{{ $subtitle ?? '' }}
-
-
-<h3>Lista filmova:</h3>
-<div class="container">
-    <table>
-        <thead>
+<div>
+    <table class="table table-striped" style="text-align: center" >
+        <thead class="thead-dark">
             <tr>
-                <td>Slika</td>
-                <td>Naslov filma</td>
-                <td>Godina</td>
-                <td>Trajanje</td>
-                <td>Akcija</td>
+                <th scope="col">Slika</td>
+                <th scope="col">Naslov filma</td>
+                <th scope="col">Godina</td>
+                <th scope="col">Trajanje</td>
+                <th scope="col">Akcija</td>
             </tr>
         </thead>
         <tbody>
             @foreach ($filmovi as $f)
-            <tr>
-                <td><img src="{{ asset('slike/' . $f->slika) }}"widht="120" height="120" ></td>
-                <td>{{$f->naslov }}</td>
-                <td>{{$f->godina }}</td>
-                <td>{{$f->trajanje }}</td>
-                <td>
-                    <form style="display:inline" name="film_delete" action="{{url("/filmovi/{$f->film_id}")}}
+            <tr style="font-size: large">
+                <th><img src="{{ asset('slike/' . $f->slika) }}"widht="200" height="200" ></th>
+                <th>{{$f->naslov }}</th>
+                <th>{{$f->godina }}</th>
+                <th>{{$f->trajanje }}</th>
+                <th>
+                    <form  name="film_delete" action="{{url("/filmovi/{$f->film_id}")}}
                           " method="POST" enctype="multipart/form-data">
                         @method('delete')
                         @csrf
@@ -50,4 +61,9 @@ $nums = (range('0', '9'));
         </tbody>
     </table>
 </div>
-<a href='{{route('filmovi.create')}}'>Dodaj novi film</a>
+<div class="links">
+    @foreach ($alpha_nums as $i) 
+    <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i }}|</a>
+    @endforeach
+</div>
+@endsection

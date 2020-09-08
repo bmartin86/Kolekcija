@@ -28,7 +28,8 @@ class FilmoviController extends Controller {
      */
     public function index() {
         $filmovi = Filmovi::all();
-        return view('filmovis.index', compact('filmovi'));
+        $subtitle = "Svi filmovi:";
+        return view('filmovis.index', compact('filmovi', 'subtitle'));
     }
 
     /**

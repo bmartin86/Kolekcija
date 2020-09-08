@@ -1,13 +1,13 @@
-@section('title', 'Dodaj novi film')
-@section('content_header')
-<h1>Novi film</h1>
-@stop
-
-
+@extends('layouts.app')
+@section('title', 'Filmovi')
+@section('sidebar')
+@parent
+<p>This is appended to the master sidebar.</p>
+@endsection
 @section('content')
 
 @if ($errors->any())
-<div class="alert alert-danger">
+<div class="alert alert-primary" role="alert">
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -19,50 +19,44 @@
 <div class="alert alert-success">{{ $message }}</div>
 @enderror
 
-<h3>Dodaj novi film:</h3>
-
+<p>
+<h4>Novi film:</h4>
+</p>
+<hr>
 <form method="POST" action="/filmovi" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="naslov"> Naslov filma:</label>
-        <br>
-        <input maxlength="99" type="text" name="naslov" required="true" value="">
-        <br>
-        <br>
-
+        <input class="form-control" maxlength="50" type="text" name="naslov" required="true" value="">
+    </div> 
+    <div class="form-group">
         <label for="zanr_id"> Žanr:</label>
-        &nbsp;
-        <select name="zanr_id" required="true">
+        <select class="form-control" name="zanr_id" required="true">
             <option value=""></option>
             @foreach ($zanr as $z)
             <option value="{{$z->zanr_id}}">{{$z->naziv}}</option>
             @endforeach
         </select>
-        &nbsp;
-        <br>
-        <br>
-
+    </div> 
+    <div class="form-group">
         <label for="godina"> Godina:</label>
-        <select name="godina">
+        <select class="form-control" name="godina">
             <option value=""></option>
             @for ($god=1900; $god <= 2020; $god++)
             <option value="{{ $god }}">{{ $god }}</option>
             @endfor
         </select>
-        <br>
-
-        <p><label for="trajanje"> Trajanje:</label>
-        <input maxlength="5" type="number" min=0 name="trajanje" required="true"
-               value="0">min</p>
-        
-        <label for="slika"> Slika: </label>
-            <input type="file" name="slika" >
-        <br>
-   
     </div>
-    <br>
     <div class="form-group">
-        <input type="submit" name="dodaj_film_sbm" value="Dodaj novi film">
+        <label for="trajanje"> Trajanje:</label>
+        <input class="form-control" maxlength="5" type="text" name="trajanje" required="true">
+    </div> 
+    <div class="form-group">
+        <label for="slika"> Slika: </label>
+        <input type="file" class="form-control-file" name="slika" >
+    </div> 
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Spremi film</button>
     </div>
 </form>
-
+@endsection
