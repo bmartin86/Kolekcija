@@ -1,9 +1,16 @@
 <?php
-$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
+//$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
+$alphas = (range('A', 'Z'));
+$nums = (range('0', '9'));
 ?>
 <div class="content">
-    @foreach ($alpha_nums as $i) 
-    <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i.'|'}}</a>
+    @foreach ($alphas as $i) 
+    <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i }}|</a>
+    @endforeach
+</div>
+<div class="content">
+    @foreach ($nums as $i) 
+    <a href='{{url("filmovi/naslovo/".$i)}}'>|{{ $i }}|</a>
     @endforeach
 </div>
 

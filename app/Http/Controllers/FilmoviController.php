@@ -12,11 +12,11 @@ class FilmoviController extends Controller {
         $filmovi = Filmovi::where('naslov', 'like', $filter . '%')->get();
 
         if (count($filmovi) == 0) {
-            $subtitle = "Ne postoji film na slovo " . $filter;
+            $subtitle = "Nema filmova koji počinju s " . $filter;
             return view('filmovis.index', compact('filmovi', 'subtitle', 'filter'));
         } else {
 
-            $subtitle = "Filmovi na slovo " . $filter;
+            $subtitle = "Filmovi koji počinju s " . $filter;
             return view('filmovis.index', compact('filmovi', 'subtitle', 'filter'));
         }
     }
