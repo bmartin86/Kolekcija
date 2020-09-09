@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Filmovi')
+<?php
+$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
+?>
 @section('sidebar')
 @parent
 @endsection
 
 @section('content')
-<?php
-$alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
-?>
 <style>
     .links {
         text-align: center;
