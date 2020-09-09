@@ -14,10 +14,7 @@
         font-size: 21px;
     }
 </style>
-
-<button type="button" class="btn btn-link" style="font-size: xx-large">
-    <a href='{{route('filmovi.create')}}'>Dodaj novi film:</a></button>
-
+<br>
 <div>
     <h4>{{ $subtitle ?? '' }}</h4>
 </div>

@@ -20,7 +20,6 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/app.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 @stop
 
 @section('js')
