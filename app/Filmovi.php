@@ -11,4 +11,9 @@ class Filmovi extends Model
     public function setNaslovAttribute($value) {
         $this->attributes['naslov'] = ucfirst($value);
     }
+    
+    public function zanr()
+    {
+        return $this->belongsTo('App\Zanr','zanr_id','zanr_id' ); 
+    }
 }

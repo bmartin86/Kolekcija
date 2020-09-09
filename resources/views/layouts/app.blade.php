@@ -26,16 +26,13 @@
         @section('sidebar')
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
+                <a class="nav-link active" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{{url("/filmovi")}}">Filmovi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="{{url("/zanr")}}">Žanrovi</a>
             </li>
         </ul>
         @show

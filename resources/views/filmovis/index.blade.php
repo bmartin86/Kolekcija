@@ -2,7 +2,6 @@
 @section('title', 'Filmovi')
 @section('sidebar')
 @parent
-<p>This is appended to the master sidebar.</p>
 @endsection
 
 @section('content')
@@ -28,7 +27,6 @@ $alpha_nums = array_merge(range('A', 'Z'), range('0', '9'));
 <div>
     <h4>{{ $subtitle ?? '' }}</h4>
 </div>
-
 <div>
     <table class="table table-striped" style="text-align: center" >
         <thead class="thead-dark">

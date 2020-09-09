@@ -22,7 +22,7 @@ class ZanrSeeder extends Seeder
             ),
             array(
                 "zanr_id" => 3,
-                "naziv" => "Kriminalisticki"
+                "naziv" => "Kriminalistički"
             ),
             array(
                 "zanr_id" => 4,
