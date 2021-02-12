@@ -56,12 +56,6 @@ class FilmoviController extends Controller {
             'slika' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $filmovi->naslov = $request->input('naslov');
-        $filmovi->zanr_id = $request->input('zanr_id');
-        $filmovi->godina = $request->input('godina');
-        $filmovi->trajanje = $request->input('trajanje');
-        $filmovi->slika = $request->input('slika');
-
         $filmovi = new Filmovi();
 
         $filmovi->naslov = $request->input('naslov');
